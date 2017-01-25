@@ -1,6 +1,7 @@
 ---
 - hosts: all
-  sudo: yes
+  become: true
+  gather_facts: no
   pre_tasks:
     - raw: sudo apt-get update && sudo apt-get -y install python-simplejson && sudo apt-get -y install python-minimal
   tasks:
