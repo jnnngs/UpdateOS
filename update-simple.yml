@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+  gather_facts: no
+  pre_tasks:
+    - raw: sudo apt-get update && sudo apt-get -y install python-simplejson && sudo apt-get -y install python-minimal
+  tasks:
+  - name: Update APT
+    apt: update_cache=yes
+  - name: Upgrade Distro
+    apt: upgrade=dist
+  - name: Auto Remove
+    shell: apt-get -y autoremove
